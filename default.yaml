@@ -1,0 +1,132 @@
+analyzer_params:
+  sentiment_threshold_positive: 0.1
+  sentiment_threshold_negative: -0.1
+  chunk_size: 100
+  bias_indicators:
+    - emotional
+    - urgent
+    - breaking
+    - exclusive
+    - shocking
+    - controversial
+    - alleged
+    - sensational
+  entity_types:
+    - PERSON
+    - ORG
+    - GPE
+  bias_score_threshold: 0.3
+
+  use_hf_classifier: false
+
+orchestrator_params:
+  summarization_algorithm: hybrid
+  summary_length: 5
+  max_length_ratio: 0.3
+  diversity_penalty: 0.5
+  position_bias: true
+  entity_boost: true
+  chunk_size: 100
+  sentiment_threshold_positive: 0.1
+  sentiment_threshold_negative: -0.1
+  bias_score_threshold: 0.3
+  batch_size: 10
+  delay_between_urls: 1.0
+  async_mode: true
+
+fetcher_params:
+  user_agent: "IntelligentWebScraper/1.0"
+  timeout: 20
+  max_retries: 3
+  delay_between_requests: 1.0
+  tls_version: "TLSv1.3"
+
+summarizer_params:
+  algorithm: hybrid
+  summary_length: 5
+  max_length_ratio: 0.3
+  diversity_penalty: 0.5
+  position_bias: true
+  entity_boost: true
+  chunk_size: 100
+  sbert_model: "all-MiniLM-L12-v2"
+
+extractor_params:
+  tags_to_remove:
+    - script
+    - style
+    - nav
+    - footer
+    - aside
+    - header
+    - form
+    - button
+    - input
+    - select
+    - textarea
+    - iframe
+    - object
+    - embed
+    - canvas
+  non_content_selectors:
+    - nav
+    - navigation
+    - menu
+    - sidebar
+    - footer
+    - comments
+    - advertisement
+    - ad-container
+    - ad-wrapper
+    - social-share
+    - share-buttons
+    - newsletter
+    - subscribe
+    - cookie-consent
+    - popup
+    - modal
+    - overlay
+  meta_tags_of_interest:
+    - title
+    - description
+    - keywords
+    - author
+    - og:title
+    - og:description
+    - og:image
+    - og:type
+    - og:url
+    - twitter:title
+    - twitter:description
+    - twitter:image
+    - article:published_time
+    - article:modified_time
+    - article:author
+    - article:section
+    - dc.date
+    - dc.creator
+  unwanted_patterns:
+    - Share this article
+    - Follow us on
+    - Subscribe to our newsletter
+    - Read more:
+    - Advertisement
+    - Sponsored content
+    - Related articles
+    - Comments
+    - Sign in
+    - Create account
+    - Log in
+  min_sentence_length: 10
+  huge_page_threshold: 1000000
+
+renderer_params:
+  user_agent: "IntelligentWebScraper/1.0"
+  timeout: 30000
+  headless: true
+  viewport_width: 1280
+  viewport_height: 800
+  wait_for_selector: null
+  delay_after_load: 2.0
+  max_retries: 2
+  playwright_timeout: 30000
